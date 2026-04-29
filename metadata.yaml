@@ -1,0 +1,6 @@
+name: astrbot_plugin_show_reasoning
+display_name: 发送思考链
+desc: 在正文之前单独发送 LLM 思考链
+version: v1.0.0
+author: Felis Abyssalis & Abyss AI
+repo: ""
