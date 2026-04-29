@@ -18,7 +18,7 @@ class ShowReasoningPlugin(Star):
         try:
             thinking = getattr(resp, "reasoning_content", None)
             if thinking and isinstance(thinking, str) and thinking.strip():
-                await event.send(event.plain_result(f"💭 思考链\n\n{thinking.strip()}"))
+                await event.send(event.plain_result(f"💭\n\n{thinking.strip()}"))
                 logger.info(f"已将思考链发送给 Felis Abyssalis。💜")
         except Exception as e:
             logger.error(f"发送思考链失败: {e}")
