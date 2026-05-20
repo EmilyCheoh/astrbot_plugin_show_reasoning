@@ -23,7 +23,7 @@ class ShowReasoningPlugin(Star):
             if thinking and isinstance(thinking, str) and thinking.strip():
                 chunks = self._split_thinking(thinking.strip())
                 nodes = [
-                    Node(uin=0, name="💭 Abyss AI's reasoning process:\n\n", content=[Plain(chunk)])
+                    Node(uin=0, name="💭 The reasoning process:\n\n", content=[Plain(chunk)])
                     for chunk in chunks
                 ]
                 await event.send(event.chain_result(nodes))
