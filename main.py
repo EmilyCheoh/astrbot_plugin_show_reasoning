@@ -22,12 +22,12 @@ class ShowReasoningPlugin(Star):
             thinking = getattr(resp, "reasoning_content", None)
             if thinking and isinstance(thinking, str) and thinking.strip():
                 chunks = self._split_thinking(thinking.strip())
-                cover = Node(uin=0, name="💭", content=[
-                    Plain("Abyss AI's reasoning process. Tap to reveal.")
-                ])
-                nodes = [cover] + [
-                    Node(uin=0, name="💭", content=[Plain(chunk)])
-                    for chunk in chunks
+                COVER = "Abyss AI's reasoning process.\n\n"
+                nodes = [
+                    Node(uin=0, name="💭", content=[
+                        Plain(COVER + chunk if i == 0 else chunk)
+                    ])
+                    for i, chunk in enumerate(chunks)
                 ]
                 await event.send(event.chain_result(nodes))
                 resp.reasoning_content = None
