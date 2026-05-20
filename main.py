@@ -23,11 +23,11 @@ class ShowReasoningPlugin(Star):
             if thinking and isinstance(thinking, str) and thinking.strip():
                 chunks = self._split_thinking(thinking.strip())
                 nodes = [
-                    Node(uin=3631802041, name="Abyss AI", content=[Plain(chunk)])
+                    Node(uin=0, name="💭", content=[Plain(chunk)])
                     for chunk in chunks
                 ]
                 await event.send(event.chain_result(nodes))
-                logger.info("已将思考链以合并转发形式发送给 Felis Abyssalis。")
+                resp.reasoning_content = None
         except Exception as e:
             logger.error(f"发送思考链失败: {e}")
 
