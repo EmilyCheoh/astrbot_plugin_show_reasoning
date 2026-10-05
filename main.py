@@ -16,7 +16,7 @@ class ShowReasoningPlugin(Star):
     def __init__(self, context: Context):
         super().__init__(context)
 
-    @filter.on_llm_response(priority=-9999)
+    @filter.on_llm_response()
     async def show_reasoning(self, event: AstrMessageEvent, resp):
         try:
             thinking = getattr(resp, "reasoning_content", None)
@@ -56,10 +56,9 @@ class ShowReasoningPlugin(Star):
             ]
             await event.send(event.chain_result(nodes))
 
-            # Prevent AstrBot's result decoration stage from sending it again.
+            # Preserve the original plugin behavior: clear only the response field.
             if hasattr(resp, "reasoning_content"):
                 resp.reasoning_content = None
-            event.set_extra("_llm_reasoning_content", None)
         except Exception as e:
             logger.error(f"发送思考链失败: {e}")
 

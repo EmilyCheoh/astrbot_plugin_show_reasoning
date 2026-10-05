@@ -1,6 +1,6 @@
 # Changelog
 
-## v2.1.0 — 2026-10-05
+## v2.1.0 — 2026-10-05（笨咪）
 
 - 增加 `_llm_reasoning_content` 兜底读取
 - 增加 `<think>` 与 `<thinking>` 标签兼容解析
